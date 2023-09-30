@@ -1,0 +1,32 @@
+
+DataShapes:
+DataShapes Role: Machine Learning Engineer Intern, May 2023 - Present · 5 mos. Remote, United States
+Datashapes Description: DataShapes is a defense contractor for the US military that researches and develops machine learning algorithms, primarily for radio-frequency data. Interning as an MLE, I formulated a data science experiment to investigate the efficacy of different architectures with TensorFlow. I also developed our data science team's data lake (S3), docker templates, and key management storage (KMS). I also experimented with implementing AWS SageMaker and Databricks for our team's use.
+Datashapes Skills: Orchestration · MySQL · Git · Agile Methodologies · Kubernetes · Docker · Technical Architecture · Reliability · Coding Standards · Debugging
+
+
+Tesla Motors:
+Tesla Motors Role: Software Engineer Intern, Jan 2023 - May 2023 · 5 mos
+Sparks, Nevada, United States · On-site. Sparks
+Tesla Description: In the spring of 2023, I had the opportunity to intern at Tesla's Giga Factory Nevada 1. Interning in its quality division as a data engineer, I serviced and migrated five Kubernetes bots. These Kubernetes bots alerted quality engineers when to take faulty parts off the manufacturing line. A faulty part that goes into a final assembly would cause one vehicle to be off-road, costing an estimated $100,000 - $150,000 each. In my project, I serviced existing Kubernetes bots and collaborated with a team of nine quality engineers. I also migrated these five Kubernetes bots frameworks, from Kubeless to Nuclio. During the migration, I refactored existing code and added rigorous logging. I also developed an Airflow pipeline and BI dashboard to monitor logs, bot failures, and network issues. Finally, I trained my team on Kubernetes, Nuclio, and Kafka and wrote comprehensive documentation on these topics.
+Tesla Skills: Orchestration · MySQL · Git · Agile Methodologies · Kubernetes · Docker · Technical Architecture · Reliability · Coding Standards · Debugging
+
+Data Cats:
+Data Cats Role: Chair of Data Engineering at Cats Stats, Aug 2021 - Sep 2022 · 1 yr 2 mos Aug, Davidson College
+Data Cats Description: Cats Stats is a club at Davidson College which assists Davidson sports teams with analytics and analysis. Personally, I belong to Cats Stats' databases team where I have two roles. (i) I help lead a team of database analysts query and maintain a database. (ii) I also help with web scraping. Currently, I am writing a script to collect data to assist Davidson's field hockey team.
+
+
+Q2 Software:
+Q2 Software Role: Software Engineer Intern, May 2022 - Aug 2022 · 4 mos May, Remote
+Q2 Description: Q2 Software is a backend fintech that provides SAAS to banks, local and national. I worked within Q2's division, Precision Lender, interning as a Data Engineer on a team of eight. At the time, Q2 provided dashboards for internal stakeholders and external clients; however, there was no way to observe if these people viewed or valued these dashboards. In my project, I engineered a dashboard that shows how must traffic each dashboard received. Speaking technically, I engineered two ETLs and a BI dashboard, piping data from Azure Data Lake logs using KQL, Airflow, Databricks, and SQL. The process of engineering also involved authoring tests, undergoing peer review, and deploying with DevOps and Kubernetes. In the end, I shared the results of this project with interns and executives.
+
+Esme Learning Solutions:
+Esme Learning Solutions Role: Software Engineer Intern, Jan 2022 - May 2022 · 5 mos, Remote
+
+Esme Learning Solutions Description: Esme is an Ed-tech start-up that provides courses professional development courses to professionals. On the job, I worked as a data engineer, data scientist, and data analyst. I created my own data sets with raw data. I made analytics and ran machine learning models. I also wrote reports and presented my findings to my bosses. In addition, I worked with amazing co-workers and really enjoyed my time working there. On the job, I worked on a few main projects: 1. I automated student record-keeping using JavaScript. This script could take any arbitrarily large list of students and create individual learner profiles. With Esme's current clientele, this script will save roughly 
+5 hours of grunt work for each time courses run. 2. I leveraged unstructured .json and .yml files using Snowflake and SQL to drive insights with Tableau visualizations and machine learning. I then presented my insights to my co-workers and to the VP of Operations. 3. I largely automated Esme's post-course slide decks using R markdown and Python .ppx. Context: each time a course runs, Esme has to make a slide deck to review the results. Each presentation is about 40 slides, so my code largely automated the process, creating all the necessary slide headers and graphs. This code will save hours for each time a presentation runs. 4. I created replicable code to update Esme's database. That is, every time raw data comes in, my code parses it and different data sets. This code will help Esme manage increasingly large amounts of data.
+
+
+College Crisis Initiative:
+Visualization Team Member, Jan 2021 - May 2021 · 5 mos Jan, Davidson County, North Carolina, United States, Davidson 
+College Crisis Initiative Description: As part of C2i's Data Visualization Team, I create and analyze large data sets. Then I use the data to create graphs and data visualizations. In turn, our team focuses on informing the public on social media about on-going issues in higher education. 

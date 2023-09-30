@@ -1,0 +1,64 @@
+{
+    "skills": [
+      "Languages: Python (2 years), SQL (2 years), JavaScript, Git, Unix, Bash, YAML",
+      "Data Storage: databases, data warehouse, data lake, blob storage, MySQL, Postgres, NoSQL",
+      "Cloud: Azure, AWS, Azure Data Factory, DevOps (CICD), Databricks, S3, RDS, Athena, EC2, Glue, RDS, IAM",
+      "Other: systems design, monitoring, Splunk (monitoring/logging), virtual machines, Spark, API (rest, sqlalchemy), Github Actions (testing), Airflow (ETL), secret encryption (Azure Key Vault), sklearn, Agile, Docker, Kubernetes"
+    ],
+    "work_experience": {
+      "DataShapes": {
+        "location": "Remote",
+        "position": "Machine Learning Engineer Intern",
+        "start_date": "June 2023",
+        "end_date": "August 2023",
+        "description": "Formulated data science experiment investigating the efficacy of five different model types on radio frequency data. Developed team’s data lake (S3), docker templates, and key management storage (KMS) within AWS."
+      },
+      "Tesla Motors": {
+        "location": "Sparks, Nevada",
+        "position": "Data Engineer and Quality Intern",
+        "start_date": "January 2023",
+        "end_date": "May 2023",
+        "description": "Communicate with quality engineers gathering requirements for automated reporting of laboratory results. Develop synchronously triggered Kubernetes Kubeless bots (OLTP), alerting engineers of failed quality checks. Save $400,000 by reducing down time of Kubeless bots through new API protocols and added flexibility. Engineer monitoring dashboard for Kubeless bots utilizing splunk logs and Airflow scheduling."
+      },
+      "Q2 Software": {
+        "location": "Raleigh, NC (Hybrid)",
+        "position": "Data Engineer Intern",
+        "start_date": "May 2022",
+        "end_date": "August 2022",
+        "description": "Consult executives on the utility of dashboards for internal stakeholders and external clients. Engineer BI dashboard piping data from Azure Data Lake logs using KQL, Airflow, Databricks, and SQL. Create, test, and deploy peer-reviewed software within a CICD pipeline, utilizing git, DevOps, and Kubernetes."
+      },
+      "Esme Learning Solutions": {
+        "location": "Remote",
+        "position": "Data Analyst Engineer Intern",
+        "start_date": "June 2021",
+        "end_date": "September 2021",
+        "description": "Used machine learning regression and clustering techniques to identify trends and inform recommendations."
+      }
+    },
+    "projects": [
+      {
+        "name": "Mom Texter",
+        "description": "Developed CLI script capable of scheduling GPT-3 generated texts to my mom."
+      },
+      {
+        "name": "Spotify API",
+        "description": "Created Flask REST API exposing personal data collected from Spotify API and stored in RDS database."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Davidson College",
+        "location": "Davidson, North Carolina",
+        "degree": "Bachelor of Science in Mathematics & Computer Science",
+        "graduation_date": "August 2023",
+        "gpa": "3.69",
+        "coursework": [
+          "Machine Learning",
+          "Data Structures & Algorithms",
+          "Linear Algebra",
+          "Statistics",
+          "Modeling"
+        ]
+      }
+    ]
+  }

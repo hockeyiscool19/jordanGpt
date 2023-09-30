@@ -1,0 +1,50 @@
+Jordan Eisenman
+802-733-7703 | jordaneisenman@gmail.com | Manchester, Vermont | Github: hockeyiscool19
+
+SKILLS
+• Languages: Python (2 years), SQL (2 years), JavaScript, Git, Unix, Bash, YAML
+• Data Storage: databases, data warehouse, data lake, blob storage, MySQL, Postgres, NoSQL
+• Cloud: Azure, AWS, Azure Data Factory, DevOps (CICD), Databricks, S3, RDS, Athena, EC2, Glue, RDS, IAM
+• Other: systems design, monitoring, Splunk (monitoring/logging), virtual machines, Spark, API (rest, sqlalchemy),
+Github Actions (testing), Airflow (ETL), secret encryption (Azure Key Vault), sklearn, Agile, Docker, Kubernetes
+
+WORK EXPERIENCE
+DataShapes Remote
+Machine Learning Engineer Intern June 2023, August 2023
+• Formulated data science experiment investigating the efficacy of five different model types on radio frequency data
+• Developed team’s data lake (S3), docker templates, and key management storage (KMS) within AWS
+
+Tesla Motors Sparks, Nevada
+Data Engineer and Quality Intern January 2023, May 2023
+• Communicate with quality engineers gathering requirements for automated reporting of laboratory results
+• Develop synchronously triggered Kubernetes Kubeless bots (OLTP), alerting engineers of failed quality checks
+• Save $400,000 by reducing down time of Kubeless bots through new API protocols and added flexibility
+• Engineer monitoring dashboard for Kubeless bots utilizing splunk logs and Airflow scheduling
+Q2 Software Raleigh, NC (Hybrid)
+Data Engineer Intern May 2022 – August 2022
+• Consult executives on the utility of dashboards for internal stakeholders and external clients
+• Engineer BI dashboard piping data from Azure Data Lake logs using KQL, Airflow, Databricks, and SQL
+• Create, test, and deploy peer-reviewed software within a CICD pipeline, utilizing git, DevOps, and Kubernetes
+Esme Learning Solutions Remote
+Data Analyst Engineer Intern June 2021 – September 2021
+• Used machine learning regression and clustering techniques to identify trends and inform recommendations
+CAMPUS INVOLVEMENT & LEADERSHIP
+AES Consulting Davidson, NC
+Co-Founder, Software Engineer November 2021 – December 2022
+• Co-found financial data consulting group, providing data infrastructure and machine learning models
+• Manage technical vision, system implentations, data pipelines, and code base for a team of five
+• Implement scalable data pipelines, extracting from five different data sourcing and loading in S3
+Cats’ Stats Manchester, VT
+Chair of Data Engineering August 2021 – September 2022
+• Lead and train a group of nine students to work with PostgreSQL, pandas, and APIs (scraping and gitPython)
+
+Projects
+• Mom Texter: developed CLI script capable of scheduling GPT-3 generated texts to my mom
+• Spotify API: created Flask REST API exposing personal data collected from Spotify API and stored in RDS database
+
+EDUCATION
+Davidson College Davidson, North Carolina
+Bachelor of Science in Mathematics & Computer Science Expected August 2023
+• GPA: 3.69
+• Coursework: Machine Learning, Data Structures & Algorithms, Linear Algebra, Statistics, Modeling
+• Research: Risk Analysis in Financial Markets with Dr. Jonad Pulaj 
