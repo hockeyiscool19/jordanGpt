@@ -65,5 +65,3 @@
 - **Description:** Queries the JORDAN_GPT model with a question and returns a response.
 - **Request Body:** JSON object with a `question` field.
 - **Response:** JSON response containing the question, response, and a corrected version (if applicable).
-
-Please note that this documentation provides a high-level overview of your API routes. You may want to include more detailed information on request/response formats, error handling, and any additional functionality if needed.
