@@ -7,21 +7,28 @@ import os
 
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
+
+import chromadb
+
+VECTOR_DB = chromadb.PersistentClient(path=PERSIST)
+QA = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="stuff", vectorstore=VECTOR_DB)
+
+client = chromadb.PersistentClient(path=r"app\utils\data\langchainModel")
+QA = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="stuff", vectorstore=client)
+
+
 PERSIST = r"app\utils\data\langchainModel"
-embedding = OpenAIEmbeddings()
+embedding = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 VECTOR_DB = Chroma(persist_directory=PERSIST, embedding_function=embedding)
-QA = VectorDBQA.from_chain_type(
-    llm=OpenAI(), chain_type="stuff", vectorstore=VECTOR_DB)
+QA = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="stuff", vectorstore=VECTOR_DB)
 
 
 class JordanGpt:
     def __init__(self):
         self.model = QA
         self.prompt = "Keep the conversation relevent to information about Jordan Eisenman. Redirect questions to be about Jordan."
-
     def query(self, query):
         return self.model.run(query)
 
 
 JORDAN_GPT = JordanGpt()
-# JORDAN_GPT.query("What is something in this document?")

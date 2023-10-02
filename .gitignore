@@ -8,4 +8,8 @@ logfile.log
 
 queries.txt
 
-Invoke-RestMethod -Uri http://127.0.0.1:5000/jordan_gpt -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"question": "What is Jordan's four internships?"}'
+trials.py
+
+postmanServiceAccount.json
+
+app/utils/data/langchainModel/

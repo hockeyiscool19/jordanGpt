@@ -2,7 +2,6 @@ from PUBLIC_VARIABLES import OPENAI_API_KEY
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.document_loaders import TextLoader
 from app.utils.trainGpt.s3_api import READ_WRITE_API
-from langchain.indexes import VectorstoreIndex
 import os
 
 
