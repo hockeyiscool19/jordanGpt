@@ -8,15 +8,6 @@ import os
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 
-import chromadb
-
-VECTOR_DB = chromadb.PersistentClient(path=PERSIST)
-QA = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="stuff", vectorstore=VECTOR_DB)
-
-client = chromadb.PersistentClient(path=r"app\utils\data\langchainModel")
-QA = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="stuff", vectorstore=client)
-
-
 PERSIST = r"app\utils\data\langchainModel"
 embedding = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 VECTOR_DB = Chroma(persist_directory=PERSIST, embedding_function=embedding)
