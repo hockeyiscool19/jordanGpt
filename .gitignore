@@ -13,3 +13,5 @@ trials.py
 postmanServiceAccount.json
 
 app/utils/data/langchainModel/
+
+trials.py
