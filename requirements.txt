@@ -1,3 +1,5 @@
+faiss-cpu==1.7.4
+halo==0.0.31
 awswrangler==3.3.0
 boto3==1.28.40
 chromadb==0.4.10
@@ -17,8 +19,8 @@ googleapis-common-protos==1.60.0
 langchain==0.0.305
 langsmith==0.0.41
 numpy==1.25.2
-openai==0.27.8
 pandas==2.0.3
 requests==2.31.0
 SQLAlchemy==2.0.20
 transformers==4.33.3
+openai==0.27.9

@@ -1,12 +1,12 @@
 from app.utils.model import JORDAN_GPT
-from app.utils.firebase import Firebase
+from app.utils.firebase import FIRE
+from app.utils.trainGpt.JORDAN_GPT import JORDAN_GPT
 from flask import Blueprint, jsonify
 from datetime import datetime
 from flask import request
 import json
 
 
-fire = Firebase()
 app_blueprint = Blueprint('app', __name__)
 
 # Load resume data from JSON file
@@ -14,7 +14,7 @@ with open('app/utils/data/resume.json') as f:
     resume_data = json.load(f)
 
 # Load resume data from JSON file
-with open('app/utils/data/roleDescription.json') as f:
+with open('app/utils/data/roleDescriptions.json') as f:
     role_data = json.load(f)
 
 # Route for root URL
@@ -25,7 +25,7 @@ def index():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Home route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify({'message': 'Welcome! With this API, you can access my resume data. Please see the documentation for more details.'})
 
 # Route for skills section
@@ -35,7 +35,7 @@ def get_skills():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Skills route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(resume_data['skills'])
 
 # Route for work experience section
@@ -45,7 +45,7 @@ def get_work_experience():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Work experience route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(resume_data['work_experience'])
 
 # Route for individual internships
@@ -55,7 +55,7 @@ def get_internship():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Internships route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     if 'internship_name' not in request.args:
         return jsonify({'message': 'Please provide an internship name'})
     internship_name = request.args['internship_name']
@@ -71,7 +71,7 @@ def get_projects():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Projects route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(resume_data['projects'])
 
 # Route for education section
@@ -81,7 +81,7 @@ def get_education():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Education route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(resume_data['education'])
 
 # Route for DataShapes internship
@@ -91,7 +91,7 @@ def get_datashapes():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'DataShapes route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(role_data['DataShapes'])
 
 # Route for Tesla internship
@@ -101,7 +101,7 @@ def get_tesla():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Tesla route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(role_data['tesla'])
 
 # Route for Cats Stats internship
@@ -121,7 +121,7 @@ def get_q2():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Q2 route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(role_data['Q2'])
 
 # Route for Esme internship
@@ -131,7 +131,7 @@ def get_esme():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Esme route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(role_data['esme'])
 
 # Route for C2i internship
@@ -141,7 +141,7 @@ def get_c2i():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'C2i route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     return jsonify(role_data['c2i'])
 
 # Route for contact information
@@ -151,7 +151,7 @@ def get_contact_info():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Contact route accessed',
     }
-    fire.load_dict(data, path='/logs')
+    FIRE.load_dict(data, path='/logs')
     contact_info = {
         'name': 'Jordan Eisenman',
         'email': 'jordaneisenman@gmail.com',
@@ -165,20 +165,11 @@ def jordan_gpt():
     try:
         # Query the JORDAN_GPT model
         question = request.json['question']
-        response = JORDAN_GPT.query(question)
+        response = JORDAN_GPT.respond(question)
         jordan_gpt = {
             'question': question,
             'response': response,
-            'corrected': ''
         }
-        logs = {
-            'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-            'loglevel': 'INFO',
-            'log': 'Contact route accessed',
-        }
-        # Load the data to Firebase
-        fire.load_dict(jordan_gpt, path='/jordan_gpt')
-        fire.load_dict(logs, path='/logs')
         # Return the response and response instruction as a JSON object 
         return jordan_gpt, 200
     except Exception as e:
@@ -187,5 +178,5 @@ def jordan_gpt():
             'loglevel': 'ERROR',
             'log': e,
         }
-        fire.load_dict(logs, path='/logs')
+        FIRE.load_dict(logs, path='/logs')
         return "Error: {}".format(e), 400

@@ -4,7 +4,7 @@ import pandas as pd
 import firebase_admin
 from firebase_admin import credentials, db
 from PUBLIC_VARIABLES import DATABASE_URL
-from app.utils.firebase import Firebase
+from datetime import datetime
 
 
 CRED = credentials.Certificate("postmanServiceAccount.json")
@@ -23,9 +23,7 @@ class Firebase:
         :param path: Path to load the dictionary to. Default is root.
         """
         ref = db.reference(path=path,url=url)
-        print(f"Loading data to Firebase")
         ref.push(data)
-        print(f"Loaded data to Firebase")
 
     def read_dict(self, path='/', url=DATABASE_URL):
         """
@@ -34,8 +32,6 @@ class Firebase:
         :param path: Path to load the dictionary to. Default is root.
         """
         ref = db.reference(path=path,url=url)
-        print(f"Reading data from Firebase")
-        print(f"Read data from Firebase")
         return ref.get()
 
     def delete_dict(self, path='/', url=DATABASE_URL):
@@ -45,6 +41,9 @@ class Firebase:
         :param path: Path to load the dictionary to. Default is root.
         """
         ref = db.reference(path=path,url=url)
-        print(f"Deleting data")
         ref.delete()
-        print(f"Deleted data")
+
+
+FIRE = Firebase()
+
+FIRE.load_dict({"test": "test"})
