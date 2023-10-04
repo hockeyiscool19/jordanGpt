@@ -1,0 +1,15 @@
+/venv
+
+dev.env
+
+**/__pycache__/
+
+logfile.log
+
+queries.txt
+
+trials.py
+
+postmanServiceAccount.json
+
+app/utils/data/langchainModel/
