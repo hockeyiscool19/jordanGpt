@@ -2,7 +2,7 @@ from app.utils.firebase import FIRE
 from app.utils.trainGpt.JORDAN_GPT import JORDAN_GPT
 from flask import Blueprint, jsonify
 from datetime import datetime
-from flask import request
+from flask import request, render_template
 import json
 
 
@@ -17,11 +17,18 @@ with open('app/utils/data/resume.json') as f:
 with open('app/utils/data/roleDescriptions.json') as f:
     role_data = json.load(f)
 
+
+# # Loads static page
+@app_blueprint.route('/')
+def index():
+    return render_template('index.html')
+
+
 # Route for root URL
 
 
-@app_blueprint.route('/')
-def index():
+@app_blueprint.route('/home')
+def home():
     # logger.info('Home route accessed')
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),

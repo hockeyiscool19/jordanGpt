@@ -15,6 +15,11 @@ def client():
 def test_index(client):
     response = client.get('/')
     assert response.status_code == 200
+
+
+def test_index(client):
+    response = client.get('/home')
+    assert response.status_code == 200
     assert b'Welcome! With this API, you can access my resume data.' in response.data
 
 
