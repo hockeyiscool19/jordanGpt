@@ -20,7 +20,7 @@ jobs:
         run: docker build -t jordangpt:latest .
 
       - name: Setup Google Cloud CLI
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@main
         with:
           version: "290.0.1"
           project_id: ${{ secrets.PROJECT_ID }}
