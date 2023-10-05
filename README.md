@@ -25,6 +25,7 @@ Design:
 
 My system design falls under two categories: app/API design and LLM model design.
 A) App Design:
+
 ![Alt text](images/design1.png)
 
-<!-- Include images/design1.png in readme -->
+Following this design: my code lives within a dockerfile or container. Containers solve the problem of "my program works on my computer and not yours." Thus, the container makes the code portable, able to be run locally or on the cloud. The container runs inside of it a Flask application which accepts .json files. These .json files hold information about my resume and role descriptions. The app serves a static .html page. From this page, the API serves various endpoints. Each end point posts data to a Firebase database, telling when, how, and what was accessed. The Firebase database is hosted by Google Cloud, living outside the container. Moreover, this container is hosted on GitHub Pages, which is free!
