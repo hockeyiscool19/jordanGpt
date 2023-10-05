@@ -23,7 +23,7 @@ jobs:
 
     - name: Run Docker Image to Generate Static Content
       run: |
-        docker run --name mycontainer ***.dkr.ecr.us-east-1.amazonaws.com/jordangpt:latest
+        docker run --name mycontainer ${{ secrets.AWS_ACCESS_KEY_ID }}.dkr.ecr.us-east-1.amazonaws.com/jordangpt:latest
         docker cp mycontainer:/path/in/container/to/output ./output
 
     - name: Deploy to GitHub Pages
