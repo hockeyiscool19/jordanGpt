@@ -45,12 +45,53 @@
 #       - name: Deploy to Google Cloud Run
 #         run: gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform managed
 
-name: Deploy to Google Cloud Run
+# name: Deploy to Google Cloud Run
+
+# on:
+#   push:
+#     branches:
+#       - main # Adjust this if you want to run the action on a different
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Docker Buildx
+#         uses: docker/setup-buildx-action@v1
+
+#       - name: Login to Google Container Registry
+#         uses: docker/login-action@v1
+#         with:
+#           registry: gcr.io
+#           username: _json_key
+#           password: ${{ secrets.GCLOUD_AUTH }}
+
+#       - name: Authenticate with gcloud
+#         uses: google-github-actions/auth@v0.4.0
+#         with:
+#           credentials_json: ${{ secrets.GCLOUD_AUTH }}
+
+#       - name: Build and push Docker image
+#         uses: docker/build-push-action@v2
+#         with:
+#           context: .
+#           push: true
+#           tags: gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
+
+#       - name: Deploy to Google Cloud Run
+#         run: |
+#           gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform managed
+
+name: Deploy to GCR
 
 on:
   push:
     branches:
-      - main # Adjust this if you want to run the action on a different
+      - main
 
 jobs:
   deploy:
@@ -60,28 +101,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Build Docker image
+        run: docker build -t jordangpt:latest .
 
-      - name: Login to Google Container Registry
-        uses: docker/login-action@v1
+      - name: Setup Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v0.2.1
         with:
-          registry: gcr.io
-          username: _json_key
-          password: ${{ secrets.GCLOUD_AUTH }}
+          project_id: ${{ secrets.PROJECT_ID }}
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+          export_default_credentials: true
 
-      - name: Authenticate with gcloud
-        uses: google-github-actions/auth@v0.4.0
-        with:
-          credentials_json: ${{ secrets.GCLOUD_AUTH }}
+      - name: Tag Docker image
+        run: docker tag jordangpt:latest gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
-
-      - name: Deploy to Google Cloud Run
+      - name: Push Docker image to GCR
         run: |
-          gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform managed
+          gcloud auth configure-docker
+          docker push gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
