@@ -1,0 +1,42 @@
+name: Deploy to Google Cloud Run
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Docker image
+        run: docker build -t jordangpt:latest .
+
+      - name: Setup Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          version: "290.0.1"
+          project_id: ${{ secrets.PROJECT_ID }}
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+
+      - name: Authenticate with Google Cloud
+        run: echo ${{ secrets.GCLOUD_AUTH }} | gcloud auth activate-service-account --key-file=-
+
+      - name: Configure gcloud
+        run: gcloud config set project ${{ secrets.PROJECT_ID }}
+
+      - name: Tag Docker image
+        run: docker tag jordangpt:latest gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
+
+      - name: Push Docker image to Google Container Registry
+        run: docker push gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
+
+      - name: Deploy to Google Cloud Run
+        run: gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform managed
