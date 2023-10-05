@@ -13,21 +13,21 @@
       "end_date": "August 2023",
       "description": "Formulated data science experiment investigating the efficacy of five different model types on radio frequency data. Developed team’s data lake (S3), docker templates, and key management storage (KMS) within AWS."
     },
-    "Tesla Motors": {
+    "tesla": {
       "location": "Sparks, Nevada",
       "position": "Data Engineer and Quality Intern",
       "start_date": "January 2023",
       "end_date": "May 2023",
       "description": "Communicate with quality engineers gathering requirements for automated reporting of laboratory results. Develop synchronously triggered Kubernetes Kubeless bots (OLTP), alerting engineers of failed quality checks. Save $400,000 by reducing down time of Kubeless bots through new API protocols and added flexibility. Engineer monitoring dashboard for Kubeless bots utilizing splunk logs and Airflow scheduling."
     },
-    "Q2 Software": {
+    "q2": {
       "location": "Raleigh, NC (Hybrid)",
       "position": "Data Engineer Intern",
       "start_date": "May 2022",
       "end_date": "August 2022",
       "description": "Consult executives on the utility of dashboards for internal stakeholders and external clients. Engineer BI dashboard piping data from Azure Data Lake logs using KQL, Airflow, Databricks, and SQL. Create, test, and deploy peer-reviewed software within a CICD pipeline, utilizing git, DevOps, and Kubernetes."
     },
-    "Esme Learning Solutions": {
+    "esme": {
       "location": "Remote",
       "position": "Data Analyst Engineer Intern",
       "start_date": "June 2021",
