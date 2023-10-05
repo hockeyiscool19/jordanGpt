@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Static Web Page</title>
+</head>
+<body>
+    <h1>Welcome to JordanGPT!</h1>
+    <p>Learn about Jordan's experiences. Ask his personal chat bot questions!</p>
+    <ul>
+        <li><a href="#" onclick="getHome()">Home</a></li>
+        <li><a href="#" onclick="getSkills()">Skills</a></li>
+        <!-- Add links for other endpoints here -->
+    </ul>
+    <div id="home"></div>
+    <div id="skills"></div>
+    <!-- Add divs for other endpoints here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function getHome() {
+            $.getJSON('/home', function(data) {
+                $('#home').text(data.message);
+            });
+        }
+
+        function getSkills() {
+            $.getJSON('/resume/skills', function(data) {
+                $('#skills').text(JSON.stringify(data));
+            });
+        }
+
+        // Add functions for other endpoints here
+    </script>
+</body>
+</html>
