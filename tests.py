@@ -1,8 +1,5 @@
 import pytest
-# Ensure you're importing the app instance as well
-from app.routes import app_blueprint
 from run import app
-from flask import json
 
 
 @pytest.fixture
