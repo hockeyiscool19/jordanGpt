@@ -2,8 +2,29 @@
 
 - **Introduction:**
 
-JordanGpt implements a Flask API which exposes both a chatbot trained on Jordan's resume, job history, and engineered promps in addition to generic API routes which expose information about Jordan's career and interests. This API is supposed to serve a similar function to a personal website, but with a backend and data flare, displaying knowledge of model deployment, prompt engineering, databases, RESTful APIs, system design, and data collection. Finally, I hope to share a little bit of my youthful creativity, playfully and tastefully combining various domains.
+I am not a company executive; therefore, I have no secretary, but, with the power of AI, I made the next best thing: JordanGpt. JordanGpt serves as my personal secretary, answering questions about my experience and career. JordanGpt exposes generic routes exposing information about my resume and work experience, in addition to a fine tuned chat bot, trained to be my secretary. This Flask API serves a similar function to a personal website, but with a backend and data flare, displaying knowledge of model deployment, prompt engineering, databases, RESTful APIs, system design, and data collection. This the front end is a rudimentary static web page. Finally, I hope to share a little bit of my youthful creativity, playfully and tastefully combining various domains.
 
-- **Who is this repository for?**
+Disclaimer: This bot collects anonymized data -- i.e., what information was accessed and what questions and answers were asked to the chatbot.
 
-On the one hand, I would like to make this repository accessible for recruiters and hiring managers to look at. That is, here are the skills I can bring to your team -- API development, NoSQL databases, prompt engineering, model tuning and deployment, data collection, containerization, web hosting. On the other hand, I hope to make this repository accessible for other developers, looking to tune there own models, containerize applications, and deploy their own software. The balance is delicate, so I hope to toe this fine line.
+- **How To Use:**
+
+URL posted soon!
+
+- **System Requirements and Design**
+
+Requirements:
+
+1. Cheap: keep cost under 20$ per month
+2. Portable: app should run anywhere
+3. Technologies must be easy to use
+4. Open source: better to use free and open source technologies
+5. Need cheap NoSql database capable of storing json data -- since openai trains on jsonl data
+6. Tested: each route should be tested
+
+Design:
+
+My system design falls under two categories: app/API design and LLM model design.
+A) App Design:
+![Alt text](images/design1.png)
+
+<!-- Include images/design1.png in readme -->
