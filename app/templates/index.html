@@ -1,35 +1,31 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Static Web Page</title>
+  <title>API Documentation</title>
 </head>
 <body>
-    <h1>Welcome to JordanGPT!</h1>
-    <p>Learn about Jordan's experiences. Ask his personal chat bot questions!</p>
-    <ul>
-        <li><a href="#" onclick="getHome()">Home</a></li>
-        <li><a href="#" onclick="getSkills()">Skills</a></li>
-        <!-- Add links for other endpoints here -->
-    </ul>
-    <div id="home"></div>
-    <div id="skills"></div>
-    <!-- Add divs for other endpoints here -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function getHome() {
-            $.getJSON('/home', function(data) {
-                $('#home').text(data.message);
-            });
-        }
+  <h1>API Documentation</h1>
 
-        function getSkills() {
-            $.getJSON('/resume/skills', function(data) {
-                $('#skills').text(JSON.stringify(data));
-            });
-        }
-
-        // Add functions for other endpoints here
-    </script>
-</body>
+  <ul>
+    <li><a href="/home">Home</a></li>
+    <li><a href="/resume/skills">Skills</a></li>
+    <li><a href="/resume/work_experience">Work Experience</a></li>
+    <li><a href="/resume/internships">Internships</a></li>
+    <li><a href="/resume/projects">Projects</a></li>
+    <li><a href="/resume/education">Education</a></li>
+    <li><a href="/roleDescriptions/datashapes">DataShapes Role Description</a></li>
+    <li><a href="/roleDescriptions/tesla">Tesla Role Description</a></li>
+    <li><a href="/roleDescriptions/data_cats">Data Cats Role Description</a></li>
+    <li><a href="/roleDescriptions/q2">Q2 Role Description</a></li>
+    <li><a href="/roleDescriptions/esme">Esme Role Description</a></li>
+    <li><a href="/roleDescriptions/c2i">C2i Role Description</a></li>
+    <li><a href="/contact">Contact Information</a></li>
+    <!-- <li><a href="/jordan_gpt">Jordan GPT</a></li> -->
+    <form action="/jordan_gpt" method="post">
+        <input type="text" name="question" placeholder="Enter your question here..." />
+        <input type="submit" value="Submit" />
+      </form>
+      
+</ul>
+<body>
 </html>

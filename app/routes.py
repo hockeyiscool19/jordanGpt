@@ -195,23 +195,47 @@ def get_contact_info():
 # Route for Jordan GPT
 
 
-@app_blueprint.route('/jordan_gpt', methods=['GET'])
+# @app_blueprint.route('/jordan_gpt', methods=['GET'])
+# def jordan_gpt():
+#     try:
+#         # Query the JORDAN_GPT model
+#         question = request.json['question']
+#         response = JORDAN_GPT.respond(question)
+#         jordan_gpt = {
+#             'question': question,
+#             'response': response,
+#         }
+#         # Return the response and response instruction as a JSON object
+#         return jordan_gpt, 200
+#     except Exception as e:
+#         logs = {
+#             'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+#             'loglevel': 'ERROR',
+#             'log': e,
+#         }
+#         FIRE.load_dict(logs, path='/logs')
+#         return "Error: {}".format(e), 400
+
+@app_blueprint.route('/jordan_gpt', methods=['GET', 'POST'])
 def jordan_gpt():
-    try:
-        # Query the JORDAN_GPT model
-        question = request.json['question']
-        response = JORDAN_GPT.respond(question)
-        jordan_gpt = {
-            'question': question,
-            'response': response,
-        }
-        # Return the response and response instruction as a JSON object
-        return jordan_gpt, 200
-    except Exception as e:
-        logs = {
-            'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-            'loglevel': 'ERROR',
-            'log': e,
-        }
-        FIRE.load_dict(logs, path='/logs')
-        return "Error: {}".format(e), 400
+  if request.method == 'GET':
+    return render_template('jordan_gpt.html')
+  elif request.method == 'POST':
+    # Check if the request has a Content-Type header of application/json.
+    if request.content_type != 'application/json':
+      # The request does not have a Content-Type header of application/json, so
+      # parse the form-encoded data.
+      question = request.form['question']
+    else:
+      # The request has a Content-Type header of application/json, so parse
+      # the JSON data.
+      question = request.json['question']
+
+    response = JORDAN_GPT.respond(question)
+    jordan_gpt = {
+      'question': question,
+      'response': response,
+    }
+    return jordan_gpt, 200
+  else:
+    return 'Method not allowed', 405

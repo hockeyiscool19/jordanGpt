@@ -7,7 +7,6 @@ from langchain.document_loaders import TextLoader
 from langchain.vectorstores import FAISS
 from PUBLIC_VARIABLES import OPENAI_API_KEY, FINE_TUNING_JOB
 from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory
 import openai
 from langchain.chat_models import ChatOpenAI
 from app.utils.firebase import FIRE

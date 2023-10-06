@@ -5,10 +5,10 @@ import firebase_admin
 from firebase_admin import credentials, db
 from PUBLIC_VARIABLES import DATABASE_URL
 from datetime import datetime
-from PUBLIC_VARIABLES import GCLOUD_AUTH
+# from PUBLIC_VARIABLES import GCLOUD_AUTH
 
-# CRED = credentials.Certificate("postmanServiceAccount.json")
-CRED = credentials.Certificate(GCLOUD_AUTH)
+CRED = credentials.Certificate("postmanServiceAccount.json")
+# CRED = credentials.Certificate(GCLOUD_AUTH)
 firebase_admin.initialize_app(CRED)
 
 
