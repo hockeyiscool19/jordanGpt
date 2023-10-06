@@ -84,7 +84,7 @@
 
 #       - name: Deploy to Google Cloud Run
 #         run: |
-#           gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform managed
+#           gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform
 
 name: Deploy to GCR
 
