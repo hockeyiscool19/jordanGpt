@@ -120,4 +120,4 @@ jobs:
           docker push gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
       - name: Deploy to Google Cloud Run
         run: |
-          gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform
+          gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform managed
