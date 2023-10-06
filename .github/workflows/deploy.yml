@@ -9,6 +9,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    # Set environment variables for the whole job
+    env:
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_ACCOUNT_NUM: ${{ secrets.AWS_ACCOUNT_NUM }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      FINE_TUNING_JOB: ${{ secrets.FINE_TUNING_JOB }}
+      GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      PROJECT_ID: ${{ secrets.PROJECT_ID }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,6 +42,7 @@ jobs:
         run: |
           gcloud auth configure-docker
           docker push gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
+
       - name: Deploy to Google Cloud Run
         run: |
           gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --platform managed --region us-east1
