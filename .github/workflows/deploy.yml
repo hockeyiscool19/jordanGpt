@@ -8,8 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    # Set environment variables for the whole job
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       FINE_TUNING_JOB: ${{ secrets.FINE_TUNING_JOB }}
