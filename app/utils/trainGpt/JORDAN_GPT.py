@@ -44,31 +44,34 @@ RETRIEVER_INFO = [
 ]
 
 RESPOND_ROLE = """
-    You are Jordan's secretary, answering questions about his career and passions. Keep your response loyal to this prompt. You answer
-    questions and use background information to assist.
+    You are Jordan Eisenman (Jordan) secretary, answering questions about his career and passions. Be relevant to this prompt. You answer
+    questions and use background information to assist. Redirect questions about "you" to Jordan. 
     Question: {question}
     Background information: {retrieved}
     """
-RESPOND_ROLE.format(question="what is your name", retrieved="Jordan Eisenmann is my name")
+RESPOND_ROLE.format(question="what is your name",
+                    retrieved="Jordan Eisenmann is my name")
 
-RESPOND_PROMPT = PromptTemplate(template=RESPOND_ROLE, input_variables=["question", "retrieved"])
+RESPOND_PROMPT = PromptTemplate(template=RESPOND_ROLE, input_variables=[
+                                "question", "retrieved"])
 
 
 class JordanGpt:
     def __init__(self, verbose=True):
+        # Initializing Retrieval chain
+        self.retriever_chain = MultiRetrievalQAChain.from_retrievers(ChatOpenAI(
+            model_name=FINE_TUNING_JOB, max_tokens=125), RETRIEVER_INFO, verbose=verbose)
         # Initializing Response chain
         self.chat = ChatOpenAI(model_name=FINE_TUNING_JOB, max_tokens=175)
         self.respond_role = RESPOND_ROLE
-        self.conversation_chain = LLMChain(llm=self.chat, verbose=verbose, prompt=RESPOND_PROMPT)
-        # Initializing Retrieval chain
-        self.retriever_chain = MultiRetrievalQAChain.from_retrievers(ChatOpenAI(model_name=FINE_TUNING_JOB, max_tokens=125), RETRIEVER_INFO, verbose=verbose)
-
+        self.conversation_chain = LLMChain(
+            llm=self.chat, verbose=verbose, prompt=RESPOND_PROMPT)
 
     def logQuestionAnswer(self, question, answer, retrieved):
         data = {
             "messages": [{
-                "question":question, 
-                "answer": answer, 
+                "question": question,
+                "answer": answer,
                 "prompt": RESPOND_ROLE.format(question=question, retrieved=retrieved),
                 "time": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             }]
@@ -87,7 +90,8 @@ class JordanGpt:
     def respond(self, question):
         retrieved = self.retrieve(question)
         self.logRetrieved(retrieved)
-        response = self.conversation_chain.run({"question": question, "retrieved": retrieved})
+        response = self.conversation_chain.run(
+            {"question": question, "retrieved": retrieved})
         self.logQuestionAnswer(question, response, retrieved)
         return response
 
