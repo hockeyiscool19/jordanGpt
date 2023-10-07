@@ -30,7 +30,7 @@ jobs:
       #   run: docker build -t jordangpt:latest .
 
       - name: Tag Docker image
-        run: docker tag jordangpt:latest gcr.io/${{ PROJECT_ID }}/jordangpt:latest
+        run: docker tag jordangpt:latest gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest
 
       - name: Push Docker image to GCR
         run: |
