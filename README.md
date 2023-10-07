@@ -4,7 +4,7 @@
 
 I am not a company executive; therefore, I have no secretary, but, with the power of AI, I made the next best thing: `JordanGpt`. `JordanGpt` serves as my personal secretary, answering questions about my experience and career. `JordanGpt` exposes generic routes exposing information about my resume and work experience, in addition to a fine tuned chat bot, trained to be my secretary. This Flask API serves a similar function to a personal website, but with a backend and data flare, displaying knowledge of model deployment, prompt engineering, databases, RESTful APIs, system design, and data collection. Finally, I hope to share a little bit of my youthful creativity, playfully and tastefully combining various domains.
 
-⚠️ **Disclaimer**: The API does monitor interactions, logging the accessed information and chatbot conversations.
+⚠️ **Disclaimer**: The API does monitor interactions, logging the accessed information and chatbot conversations. Also, JordanGpt needs to be more heavily Trained.
 
 ## 🛠️ How To Use
 
