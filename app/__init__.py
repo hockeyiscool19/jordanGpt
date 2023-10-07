@@ -35,8 +35,6 @@ SWAGGER_TEMPLATE = {
 def create_app():
     app = Flask(__name__)
     swagger = Swagger(app, template=SWAGGER_TEMPLATE)
-
     from .routes import app_blueprint
     app.register_blueprint(app_blueprint)
-
     return app

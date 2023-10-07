@@ -4,9 +4,13 @@ from flask import Blueprint, jsonify
 from datetime import datetime
 from flask import request, render_template, session
 import json
+import time
+import secrets
 
 
 app_blueprint = Blueprint('app', __name__)
+app_blueprint.secret_key = secrets.token_hex(32)
+
 
 # Load resume data from JSON file
 with open('app/utils/data/resume.json') as f:
@@ -349,3 +353,61 @@ def jordan_gpt():
         }
         FIRE.load_dict(logs, path='/logs')
         return "Error: {}".format(e), 400
+
+
+################################################################################################################################################
+from firebase_admin import auth
+from flasgger.utils import swag_from
+
+@app_blueprint.route('/signup', methods=['POST'])
+def signup():
+    """
+    Signup a new user
+    ---
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          required:
+            - email
+            - password
+          properties:
+            email:
+              type: string
+              description: Email address of the user.
+            password:
+              type: string
+              description: Password for the user.
+    responses:
+      200:
+        description: Successfully created user
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+            uid:
+              type: string
+      400:
+        description: Error creating user
+    """
+
+    try:
+        data = request.json
+        email = data['email']
+        password = data['password']
+
+        # Create a user in Firebase
+        user = auth.create_user(email=email, password=password)
+
+        # The user's ID (uid) can be accessed from the user object
+        uid = user.uid
+
+        # Optionally, store the uid or any other details in your database
+
+        return jsonify({"message": "Successfully created user", "uid": uid}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400

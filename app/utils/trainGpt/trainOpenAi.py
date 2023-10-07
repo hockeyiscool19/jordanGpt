@@ -1,5 +1,4 @@
 from PUBLIC_VARIABLES import OPENAI_API_KEY
-import os
 import openai
 
 
