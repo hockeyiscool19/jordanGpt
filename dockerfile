@@ -5,7 +5,9 @@ WORKDIR /code
 
 # Copy only requirements first to cache it
 COPY ./requirements.txt /code/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt -v
+
+# RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Now copy all files
 COPY . .

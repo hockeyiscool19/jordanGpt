@@ -51,4 +51,4 @@ if __name__ == '__main__':
     http_server.serve_forever()
 
 
-# http://10.0.0.157:5000/apidocs/#
+# http://10.0.0.157:5000/apidocs/#, http://10.0.0.157:7860/apidocs/#/

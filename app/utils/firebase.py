@@ -1,11 +1,9 @@
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import credentials, db
+from firebase_admin import credentials, db, initialize_app
 from PUBLIC_VARIABLES import DATABASE_URL
 from PUBLIC_VARIABLES import GCLOUD_AUTH
 
 CRED = credentials.Certificate(GCLOUD_AUTH)
-firebase_admin.initialize_app(CRED)
+initialize_app(CRED)
 
 
 class Firebase:
