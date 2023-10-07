@@ -2,12 +2,11 @@ from app.utils.firebase import FIRE
 from app.utils.trainGpt.JORDAN_GPT import JORDAN_GPT
 from flask import Blueprint, jsonify
 from datetime import datetime
-from flask import request, render_template
+from flask import request, render_template, session
 import json
 
 
 app_blueprint = Blueprint('app', __name__)
-
 
 # Load resume data from JSON file
 with open('app/utils/data/resume.json') as f:
@@ -24,11 +23,17 @@ def index():
     return render_template('index.html')
 
 
-# Route for root URL
-
-
 @app_blueprint.route('/home')
 def home():
+    """
+    Home Route
+    ---
+    tags:
+      - Home
+    responses:
+      200:
+        description: Welcome message and general information about the API.
+    """
     # logger.info('Home route accessed')
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -37,11 +42,17 @@ def home():
     FIRE.load_dict(data, path='/logs')
     return jsonify({'message': 'Welcome! With this API, you can access my resume data. Please see the documentation for more details.'})
 
-# Route for skills section
-
-
 @app_blueprint.route('/resume/skills')
 def get_skills():
+    """
+    Get Skills
+    ---
+    tags:
+      - Resume
+    responses:
+      200:
+        description: Returns the skills section of the resume.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Skills route accessed',
@@ -49,11 +60,22 @@ def get_skills():
     FIRE.load_dict(data, path='/logs')
     return jsonify(resume_data['skills'])
 
+
 # Route for work experience section
 
 
 @app_blueprint.route('/resume/work_experience')
 def get_work_experience():
+    """
+    Get Work Experience
+    ---
+    tags:
+      - Resume
+    responses:
+      200:
+        description: Returns the work experience section of the resume.
+    """
+
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Work experience route accessed',
@@ -66,6 +88,24 @@ def get_work_experience():
 
 @app_blueprint.route('/resume/internships')
 def get_internship():
+    """
+    Get Specific Internship
+    ---
+    tags:
+      - Resume
+    parameters:
+      - name: internship_name
+        in: query
+        type: string
+        required: true
+        description: Name of the internship to retrieve.
+    responses:
+      200:
+        description: Returns details of the specified internship.
+      400:
+        description: Internship not found.
+    """
+
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Internships route accessed',
@@ -84,6 +124,15 @@ def get_internship():
 
 @app_blueprint.route('/resume/projects')
 def get_projects():
+    """
+    Get Projects
+    ---
+    tags:
+      - Resume
+    responses:
+      200:
+        description: Returns the projects section of the resume.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Projects route accessed',
@@ -96,6 +145,15 @@ def get_projects():
 
 @app_blueprint.route('/resume/education')
 def get_education():
+    """
+    Get Education
+    ---
+    tags:
+      - Resume
+    responses:
+      200:
+        description: Returns the education section of the resume.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Education route accessed',
@@ -108,6 +166,15 @@ def get_education():
 
 @app_blueprint.route('/roleDescriptions/datashapes')
 def get_datashapes():
+    """
+    Get DataShapes Internship Description
+    ---
+    tags:
+      - Internship Descriptions
+    responses:
+      200:
+        description: Returns the description for the DataShapes internship.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'DataShapes route accessed',
@@ -120,6 +187,15 @@ def get_datashapes():
 
 @app_blueprint.route('/roleDescriptions/tesla')
 def get_tesla():
+    """
+    Get Tesla Internship Description
+    ---
+    tags:
+      - Internship Descriptions
+    responses:
+      200:
+        description: Returns the description for the Tesla internship.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Tesla route accessed',
@@ -132,6 +208,15 @@ def get_tesla():
 
 @app_blueprint.route('/roleDescriptions/data_cats')
 def get_data_cats():
+    """
+    Get Data Cats Internship Description
+    ---
+    tags:
+      - Internship Descriptions
+    responses:
+      200:
+        description: Returns the description for the Data Cats internship.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Data Cats route accessed',
@@ -144,6 +229,15 @@ def get_data_cats():
 
 @app_blueprint.route('/roleDescriptions/q2')
 def get_q2():
+    """
+    Get Q2 Internship Description
+    ---
+    tags:
+      - Internship Descriptions
+    responses:
+      200:
+        description: Returns the description for the Q2 internship.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Q2 route accessed',
@@ -156,6 +250,15 @@ def get_q2():
 
 @app_blueprint.route('/roleDescriptions/esme')
 def get_esme():
+    """
+    Get Esme Internship Description
+    ---
+    tags:
+      - Internship Descriptions
+    responses:
+      200:
+        description: Returns the description for the Esme internship.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'Esme route accessed',
@@ -168,6 +271,15 @@ def get_esme():
 
 @app_blueprint.route('/roleDescriptions/c2i')
 def get_c2i():
+    """
+    Get C2i Internship Description
+    ---
+    tags:
+      - Internship Descriptions
+    responses:
+      200:
+        description: Returns the description for the C2i internship.
+    """
     data = {
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'log': 'C2i route accessed',
@@ -194,48 +306,46 @@ def get_contact_info():
 
 # Route for Jordan GPT
 
-
-# @app_blueprint.route('/jordan_gpt', methods=['GET'])
-# def jordan_gpt():
-#     try:
-#         # Query the JORDAN_GPT model
-#         question = request.json['question']
-#         response = JORDAN_GPT.respond(question)
-#         jordan_gpt = {
-#             'question': question,
-#             'response': response,
-#         }
-#         # Return the response and response instruction as a JSON object
-#         return jordan_gpt, 200
-#     except Exception as e:
-#         logs = {
-#             'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-#             'loglevel': 'ERROR',
-#             'log': e,
-#         }
-#         FIRE.load_dict(logs, path='/logs')
-#         return "Error: {}".format(e), 400
-
-@app_blueprint.route('/jordan_gpt', methods=['GET', 'POST'])
+@app_blueprint.route('/jordan_gpt', methods=['POST'])
 def jordan_gpt():
-  if request.method == 'GET':
-    return render_template('jordan_gpt.html')
-  elif request.method == 'POST':
-    # Check if the request has a Content-Type header of application/json.
-    if request.content_type != 'application/json':
-      # The request does not have a Content-Type header of application/json, so
-      # parse the form-encoded data.
-      question = request.form['question']
-    else:
-      # The request has a Content-Type header of application/json, so parse
-      # the JSON data.
-      question = request.json['question']
-
-    response = JORDAN_GPT.respond(question)
-    jordan_gpt = {
-      'question': question,
-      'response': response,
-    }
-    return jordan_gpt, 200
-  else:
-    return 'Method not allowed', 405
+    """
+    Query the JORDAN_GPT Model
+    ---
+    tags:
+      - GPT
+    parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          required:
+            - question
+          properties:
+            question:
+              type: string
+              description: Question to ask the JORDAN_GPT model.
+    responses:
+      200:
+        description: Returns the response from the JORDAN_GPT model.
+      400:
+        description: Error querying the model.
+    """
+    try:
+        # Query the JORDAN_GPT model
+        question = request.json['question']
+        response = JORDAN_GPT.respond(question)
+        jordan_gpt = {
+            'question': question,
+            'response': response,
+        }
+        # Return the response and response instruction as a JSON object
+        return jordan_gpt, 200
+    except Exception as e:
+        logs = {
+            'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'loglevel': 'ERROR',
+            'log': e,
+        }
+        FIRE.load_dict(logs, path='/logs')
+        return "Error: {}".format(e), 400

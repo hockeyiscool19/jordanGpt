@@ -45,7 +45,7 @@ RETRIEVER_INFO = [
 
 RESPOND_ROLE = """
     You are Jordan's secretary, answering questions about his career and passions. Keep your response loyal to this prompt. You answer
-    questions and use background information to assist
+    questions and use background information to assist.
     Question: {question}
     Background information: {retrieved}
     """
@@ -56,11 +56,12 @@ RESPOND_PROMPT = PromptTemplate(template=RESPOND_ROLE, input_variables=["questio
 
 class JordanGpt:
     def __init__(self, verbose=True):
-        # Initializing Response agent
+        # Initializing Response chain
         self.chat = ChatOpenAI(model_name=FINE_TUNING_JOB, max_tokens=175)
         self.respond_role = RESPOND_ROLE
         self.conversation_chain = LLMChain(llm=self.chat, verbose=verbose, prompt=RESPOND_PROMPT)
-        self.retriever_chain = MultiRetrievalQAChain.from_retrievers(ChatOpenAI(max_tokens=100), RETRIEVER_INFO, verbose=verbose)
+        # Initializing Retrieval chain
+        self.retriever_chain = MultiRetrievalQAChain.from_retrievers(ChatOpenAI(model_name=FINE_TUNING_JOB, max_tokens=125), RETRIEVER_INFO, verbose=verbose)
 
 
     def logQuestionAnswer(self, question, answer, retrieved):

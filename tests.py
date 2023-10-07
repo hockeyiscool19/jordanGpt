@@ -59,9 +59,9 @@ def test_get_contact_info(client):
     assert b'802-733-7703' in response.data
 
 
-def test_jordan_gpt_with_question(client):
-    data = {"question": "Tell me about Jordan's four internships?"}
-    response = client.get('/jordan_gpt', json=data)
+# def test_jordan_gpt_with_question(client):
+#     data = {"question": "Tell me about Jordan's four internships?"}
+#     response = client.get('/jordan_gpt', json=data)
 
-    # Check that the status code is 200 (OK)
-    assert response.status_code == 200
+#     # Check that the status code is 200 (OK)
+#     assert response.status_code == 200

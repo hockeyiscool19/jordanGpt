@@ -1,10 +1,8 @@
 import firebase_admin
 from firebase_admin import credentials
-import pandas as pd
 import firebase_admin
 from firebase_admin import credentials, db
 from PUBLIC_VARIABLES import DATABASE_URL
-from datetime import datetime
 # from PUBLIC_VARIABLES import GCLOUD_AUTH
 
 CRED = credentials.Certificate("postmanServiceAccount.json")
