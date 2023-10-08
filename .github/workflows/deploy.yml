@@ -43,6 +43,11 @@
 #         run: |
 #           gcloud run deploy jordangpt --image gcr.io/${{ secrets.PROJECT_ID }}/jordangpt:latest --region us-central1 --allow-unauthenticated
 
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
