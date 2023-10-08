@@ -1,8 +1,8 @@
 import os
 import json
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv("dev.env")
+load_dotenv("dev.env")
 
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 DATABASE_URL = os.environ.get('DATABASE_URL')
