@@ -67,8 +67,6 @@ The architecture is split into two main areas: app/API design and LLM model desi
 4. Although I like that this code exposes the LLM prompting and instructions, which is instructive 📖, I would also like to implement some forms of LLM security 🔍.
 5. In a perfect world, I add GitHub Actions to automatically push to Google Cloud's Cloud Run ☁️.
 
-- **Future Elements**:
-
 ---
 
 Hope you enjoy exploring and engaging with `JordanGpt`! Dive in and let AI surprise you! 🚀
